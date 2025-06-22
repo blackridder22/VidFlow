@@ -20,7 +20,7 @@ export function FrequentlyAsked() {
         <div className="flex flex-col items-center justify-center space-y-8 text-center">
           <div className="space-y-2">
             <div className="mb-2 inline-block rounded-lg bg-teal-100 px-3 py-1 text-sm text-teal-700 dark:bg-teal-800 dark:text-teal-50">
-              {t("badge")}
+              FAQ
             </div>
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
               Frequently Asked Questions
@@ -52,7 +52,7 @@ export function FrequentlyAsked() {
                     <path d="M12 17h.01"></path>
                   </svg>
                 </div>
-                {t("sections.general.title")}
+                General Questions
               </h3>
 
               <Accordion type="single" collapsible className="w-full">
@@ -90,7 +90,7 @@ export function FrequentlyAsked() {
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
                   </svg>
                 </div>
-                {t("sections.technical.title")}
+                Technical & Security
               </h3>
 
               <Accordion type="single" collapsible className="w-full">

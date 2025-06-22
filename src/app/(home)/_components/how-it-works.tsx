@@ -17,7 +17,7 @@ export function HowItWorks() {
         <div className="flex flex-col items-center justify-center space-y-8 text-center">
           <div className="space-y-2">
             <div className="mb-2 inline-block rounded-lg bg-teal-100 px-3 py-1 text-sm text-teal-700 dark:bg-teal-800 dark:text-teal-50">
-              {t("badge")}
+              How It Works
             </div>
             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">
               How It Works

@@ -27,8 +27,9 @@ export function LogoText({ className, ...props }: React.ComponentProps<"div">) {
 
 export function LogoImage({
   className,
-  ...props
-}: React.ComponentProps<"img">) {
+}: {
+  className?: string;
+}) {
   return (
     <Image
       src="/webflow.png"
@@ -36,7 +37,6 @@ export function LogoImage({
       width={32}
       height={32}
       className={cn("object-contain", className)}
-      {...props}
     />
   );
 }
