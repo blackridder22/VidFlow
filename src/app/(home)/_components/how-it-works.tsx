@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Copy, Download, Link } from "lucide-react";
 
 import { homeLinks, homeSections } from "@/lib/constants";
-import { cn } from "@/lib/utils";
 
 export function HowItWorks() {
 

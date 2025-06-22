@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/accordion";
 
 import { homeSections } from "@/lib/constants";
-import { cn } from "@/lib/utils";
 
 export function FrequentlyAsked() {
 
@@ -97,11 +96,11 @@ export function FrequentlyAsked() {
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value="item-4">
                   <AccordionTrigger>Is it safe to use this downloader?</AccordionTrigger>
-                  <AccordionContent>Absolutely! We prioritize your privacy and security. We don't store your data, require personal information, or install any malware on your device.</AccordionContent>
+                  <AccordionContent>Absolutely! We prioritize your privacy and security. We don&apos;t store your data, require personal information, or install any malware on your device.</AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-5">
                   <AccordionTrigger>What quality are the downloaded videos?</AccordionTrigger>
-                  <AccordionContent>We preserve the original quality of Instagram content. You'll get the same resolution and quality as the original post, including HD videos when available.</AccordionContent>
+                  <AccordionContent>We preserve the original quality of Instagram content. You&apos;ll get the same resolution and quality as the original post, including HD videos when available.</AccordionContent>
                 </AccordionItem>
               </Accordion>
             </div>

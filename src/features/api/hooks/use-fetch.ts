@@ -1,8 +1,6 @@
 "use client";
 
-import React from "react";
-
-import { FetchInit, FetchInput } from "@/types/fetch-params";
+// Removed unused imports
 
 export function useFetch() {
   const fetchData = async (url: string, options?: RequestInit) => {

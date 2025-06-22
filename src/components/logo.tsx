@@ -2,6 +2,7 @@ import React from "react";
 
 import { cn } from "@/lib/utils";
 import { Fira_Sans as LogoFont } from "next/font/google";
+import Image from "next/image";
 
 const logoFont = LogoFont({
   variable: "--font-logo",
@@ -29,9 +30,11 @@ export function LogoImage({
   ...props
 }: React.ComponentProps<"img">) {
   return (
-    <img
+    <Image
       src="/webflow.png"
       alt="VidFlow Logo"
+      width={32}
+      height={32}
       className={cn("object-contain", className)}
       {...props}
     />

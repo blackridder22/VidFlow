@@ -3,7 +3,6 @@ import React from "react";
 import { CheckCircle, Shield, TvMinimalPlay, Zap } from "lucide-react";
 
 import { homeSections } from "@/lib/constants";
-import { cn } from "@/lib/utils";
 
 export function Features() {
 

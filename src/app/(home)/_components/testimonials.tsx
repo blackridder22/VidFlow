@@ -29,7 +29,7 @@ export function Testimonials() {
                 ))}
               </div>
               <p className="text-sm text-muted-foreground">
-                "This tool is amazing! I can easily download my favorite Instagram videos without any hassle. The quality is perfect and it's super fast."
+                &ldquo;This tool is amazing! I can easily download my favorite Instagram videos without any hassle. The quality is perfect and it&apos;s super fast.&rdquo;
               </p>
               <div className="flex items-center space-x-2">
                 <div className="text-sm font-medium">Sarah Johnson</div>
@@ -42,7 +42,7 @@ export function Testimonials() {
                 ))}
               </div>
               <p className="text-sm text-muted-foreground">
-                "I've tried many Instagram downloaders, but this one is by far the best. Clean interface, reliable downloads, and completely free!"
+                &ldquo;I&apos;ve tried many Instagram downloaders, but this one is by far the best. Clean interface, reliable downloads, and completely free!&rdquo;
               </p>
               <div className="flex items-center space-x-2">
                 <div className="text-sm font-medium">Mike Chen</div>
@@ -55,7 +55,7 @@ export function Testimonials() {
                 ))}
               </div>
               <p className="text-sm text-muted-foreground">
-                "Perfect for content creators like me. I can save my own posts and reels easily. The download speed is incredible!"
+                &ldquo;Perfect for content creators like me. I can save my own posts and reels easily. The download speed is incredible!&rdquo;
               </p>
               <div className="flex items-center space-x-2">
                 <div className="text-sm font-medium">Emma Rodriguez</div>

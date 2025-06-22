@@ -18,8 +18,6 @@ import { ThemeToggleButton } from "@/features/theme/theme-toggle-button";
 
 import { Menu } from "lucide-react";
 
-import { homeLinks } from "@/lib/constants";
-
 export function Header() {
   const isMobile = useIsMobile();
   const [open, setOpen] = React.useState(false);
