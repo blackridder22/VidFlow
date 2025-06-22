@@ -3,12 +3,12 @@ import { IThemeCookie } from "@/features/cookies/theme/interface";
 
 import { isThemeAvailable } from "@/features/theme/utils";
 
-import { cookiesKeys } from "../config";
+import { COOKIE_NAMES } from "../config";
 import { clientCookie } from "../client-cookie";
 import { DEFAULT_THEME } from "@/features/theme/config";
 
 function getTheme(): Theme {
-  const theme = clientCookie.get(cookiesKeys.THEME);
+  const theme = clientCookie.get(COOKIE_NAMES.THEME);
 
   if (theme && isThemeAvailable(theme)) {
     return theme;
@@ -20,7 +20,7 @@ function getTheme(): Theme {
 function setTheme(theme: Theme) {
   if (!isThemeAvailable(theme)) return;
 
-  clientCookie.set(cookiesKeys.THEME, theme, { expires: 365 });
+  clientCookie.set(COOKIE_NAMES.THEME, theme, { expires: 365 });
 }
 
 export const themeCookieClient: IThemeCookie = {

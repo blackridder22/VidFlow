@@ -1,15 +1,13 @@
 import React from "react";
 
-import { useTranslations } from "next-intl";
-
 import { Button } from "@/components/ui/button";
 
-import { Copy, Download, Clipboard } from "lucide-react";
+import { Copy, Download, Link } from "lucide-react";
 
 import { homeLinks, homeSections } from "@/lib/constants";
+import { cn } from "@/lib/utils";
 
 export function HowItWorks() {
-  const t = useTranslations("pages.home.howItWorks");
 
   return (
     <section
@@ -23,10 +21,10 @@ export function HowItWorks() {
               {t("badge")}
             </div>
             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">
-              {t("title")}
+              How It Works
             </h2>
             <p className="text-muted-foreground mx-auto max-w-[700px] md:text-xl">
-              {t("description")}
+              Download Instagram videos and photos in just 3 simple steps
             </p>
           </div>
 
@@ -42,10 +40,10 @@ export function HowItWorks() {
                     <Copy className="h-8 w-8 text-teal-500" />
                   </div>
                   <h3 className="mb-2 text-xl font-bold">
-                    {t("steps.copy.title")}
+                    Copy Instagram URL
                   </h3>
                   <p className="text-muted-foreground">
-                    {t("steps.copy.descriptionDesktop")}
+                    Copy the URL of the Instagram post or reel you want to download from your browser or app
                   </p>
                 </div>
               </div>
@@ -56,13 +54,13 @@ export function HowItWorks() {
                 </div>
                 <div className="h-full rounded-xl border border-gray-100 bg-white p-6 shadow-md transition-all duration-200 hover:-translate-y-1 hover:shadow-md dark:border-gray-700 dark:bg-gray-800">
                   <div className="mb-4 flex justify-center">
-                    <Clipboard className="h-8 w-8 text-teal-500" />
+                    <Link className="h-8 w-8 text-teal-500" />
                   </div>
                   <h3 className="mb-2 text-xl font-bold">
-                    {t("steps.paste.title")}
+                    Paste URL Here
                   </h3>
                   <p className="text-muted-foreground">
-                    {t("steps.paste.descriptionDesktop")}
+                    Paste the copied URL into our download form above and click the download button
                   </p>
                 </div>
               </div>
@@ -76,10 +74,10 @@ export function HowItWorks() {
                     <Download className="h-8 w-8 text-teal-500" />
                   </div>
                   <h3 className="mb-2 text-xl font-bold">
-                    {t("steps.download.title")}
+                    Download & Enjoy
                   </h3>
                   <p className="text-muted-foreground">
-                    {t("steps.download.descriptionDesktop")}
+                    Your video or photo will be processed and ready for download in high quality within seconds
                   </p>
                 </div>
               </div>
@@ -98,10 +96,10 @@ export function HowItWorks() {
               <div className="flex-1 rounded-lg border border-gray-100 bg-white p-4 shadow-md transition-all duration-200 hover:-translate-y-1 hover:shadow-md dark:border-gray-700 dark:bg-gray-800">
                 <div className="mb-2 flex items-center">
                   <Copy className="mr-2 h-5 w-5 text-teal-500" />
-                  <h3 className="text-lg font-bold">{t("steps.copy.title")}</h3>
+                  <h3 className="text-lg font-bold">Copy Instagram URL</h3>
                 </div>
                 <p className="text-muted-foreground text-sm">
-                  {t("steps.copy.descriptionMobile")}
+                  Copy the URL of the Instagram post or reel you want to download from your browser or app
                 </p>
               </div>
             </div>
@@ -112,13 +110,13 @@ export function HowItWorks() {
               </div>
               <div className="flex-1 rounded-lg border border-gray-100 bg-white p-4 shadow-md transition-all duration-200 hover:-translate-y-1 hover:shadow-md dark:border-gray-700 dark:bg-gray-800">
                 <div className="mb-2 flex items-center">
-                  <Clipboard className="mr-2 h-5 w-5 text-teal-500" />
+                  <Link className="mr-2 h-5 w-5 text-teal-500" />
                   <h3 className="text-lg font-bold">
-                    {t("steps.paste.title")}
+                    Paste URL Here
                   </h3>
                 </div>
                 <p className="text-muted-foreground text-sm">
-                  {t("steps.paste.descriptionMobile")}
+                  Paste the copied URL into our download form above and click the download button
                 </p>
               </div>
             </div>
@@ -131,11 +129,11 @@ export function HowItWorks() {
                 <div className="mb-2 flex items-center">
                   <Download className="mr-2 h-5 w-5 text-teal-500" />
                   <h3 className="text-lg font-bold">
-                    {t("steps.download.title")}
+                    Download & Enjoy
                   </h3>
                 </div>
                 <p className="text-muted-foreground text-sm">
-                  {t("steps.download.descriptionMobile")}
+                  Your video or photo will be processed and ready for download in high quality within seconds
                 </p>
               </div>
             </div>
@@ -146,7 +144,7 @@ export function HowItWorks() {
               className="bg-teal-500 text-white hover:bg-teal-600 dark:bg-teal-700 dark:hover:bg-teal-600"
               asChild
             >
-              <a href={homeLinks.hero}>{t("ctaButton")}</a>
+              <a href={homeLinks.hero}>Try It Now</a>
             </Button>
           </div>
         </div>

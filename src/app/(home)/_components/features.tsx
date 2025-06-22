@@ -1,13 +1,11 @@
 import React from "react";
 
-import { useTranslations } from "next-intl";
-
 import { CheckCircle, Shield, TvMinimalPlay, Zap } from "lucide-react";
 
 import { homeSections } from "@/lib/constants";
+import { cn } from "@/lib/utils";
 
 export function Features() {
-  const t = useTranslations("pages.home.features");
 
   return (
     <section
@@ -18,13 +16,13 @@ export function Features() {
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
             <div className="mb-2 inline-block rounded-lg bg-teal-100 px-3 py-1 text-sm text-teal-700 dark:bg-teal-800 dark:text-teal-50">
-              {t("badge")}
+              Features
             </div>
             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">
-              {t("title")}
+              Why Choose Our Instagram Downloader?
             </h2>
             <p className="text-muted-foreground mx-auto max-w-[700px] md:text-xl">
-              {t("description")}
+              Experience the fastest, most reliable way to download Instagram videos and photos with our advanced features
             </p>
           </div>
           <div className="mt-8 grid w-full grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 md:gap-8 xl:grid-cols-4">
@@ -33,10 +31,10 @@ export function Features() {
                 <Shield className="h-6 w-6 text-teal-600 sm:h-8 sm:w-8" />
               </div>
               <h3 className="text-lg font-bold sm:text-xl">
-                {t("cards.free.title")}
+                100% Free & Safe
               </h3>
               <p className="text-muted-foreground text-center text-sm sm:text-base">
-                {t("cards.free.description")}
+                No registration required, no hidden fees, and completely secure downloads with privacy protection
               </p>
             </div>
             <div className="flex flex-col items-center space-y-3 rounded-xl border bg-white p-4 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md sm:p-6 dark:bg-gray-800">
@@ -44,10 +42,10 @@ export function Features() {
                 <CheckCircle className="h-6 w-6 text-teal-600 sm:h-8 sm:w-8" />
               </div>
               <h3 className="text-lg font-bold sm:text-xl">
-                {t("cards.noRegistration.title")}
+                No Registration Required
               </h3>
               <p className="text-muted-foreground text-center text-sm sm:text-base">
-                {t("cards.noRegistration.description")}
+                Start downloading instantly without creating accounts or providing personal information
               </p>
             </div>
             <div className="flex flex-col items-center space-y-3 rounded-xl border bg-white p-4 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md sm:p-6 dark:bg-gray-800">
@@ -55,10 +53,10 @@ export function Features() {
                 <Zap className="h-6 w-6 text-teal-600 sm:h-8 sm:w-8" />
               </div>
               <h3 className="text-lg font-bold sm:text-xl">
-                {t("cards.fast.title")}
+                Lightning Fast Downloads
               </h3>
               <p className="text-muted-foreground text-center text-sm sm:text-base">
-                {t("cards.fast.description")}
+                Download Instagram videos and photos in seconds with our optimized servers and advanced compression technology
               </p>
             </div>
             <div className="flex flex-col items-center space-y-3 rounded-xl border bg-white p-4 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md sm:p-6 dark:bg-gray-800">
@@ -66,10 +64,10 @@ export function Features() {
                 <TvMinimalPlay className="h-6 w-6 text-teal-600 sm:h-8 sm:w-8" />
               </div>
               <h3 className="text-lg font-bold sm:text-xl">
-                {t("cards.hdQuality.title")}
+                High Quality Downloads
               </h3>
               <p className="text-muted-foreground text-center text-sm sm:text-base">
-                {t("cards.hdQuality.description")}
+                Preserve original quality with support for HD videos, high-resolution images, and crystal-clear audio
               </p>
             </div>
           </div>

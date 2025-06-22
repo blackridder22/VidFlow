@@ -3,12 +3,12 @@ import { IThemeCookie } from "@/features/cookies/theme/interface";
 
 import { isThemeAvailable } from "@/features/theme/utils";
 
-import { cookiesKeys } from "../config";
+import { COOKIE_NAMES } from "../config";
 import { serverCookie } from "../server-cookie";
 import { DEFAULT_THEME } from "@/features/theme/config";
 
 async function getThemeServer(): Promise<Theme> {
-  const theme = await serverCookie.get(cookiesKeys.THEME);
+  const theme = await serverCookie.get(COOKIE_NAMES.THEME);
 
   if (theme && isThemeAvailable(theme)) {
     return theme;
@@ -20,7 +20,7 @@ async function getThemeServer(): Promise<Theme> {
 async function setThemeServer(theme: Theme) {
   if (!isThemeAvailable(theme)) return;
 
-  await serverCookie.set(cookiesKeys.THEME, theme, { expires: 365 });
+  await serverCookie.set(COOKIE_NAMES.THEME, theme, { expires: 365 });
 }
 
 export const themeCookieServer: IThemeCookie = {

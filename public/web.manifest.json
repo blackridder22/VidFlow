@@ -1,11 +1,19 @@
 {
-  "name": "Gram Grabberz",
-  "short_name": "GramGrabberz",
+  "name": "VidFlow",
+  "short_name": "VidFlow",
   "description": "Fast, free, and no login required. Just paste the URL and download.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#4285f4",
+  "theme_color": "#14b8a6",
+  "icons": [
+    {
+      "src": "/webflow.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
   "related_applications": [],
   "prefer_related_applications": false,
   "scope": "/",
@@ -22,11 +30,13 @@
     "Instagram video downloader free",
     "Instagram video grabber free",
     "Instagram video saver app",
-    "Instagram video grabber app"
+    "Instagram video grabber app",
+    "VidFlow",
+    "video downloader"
   ],
   "author": "riad-azz",
   "copyright": "© 2025 riad-azz. All rights reserved.",
   "rating": "General",
-  "apple-mobile-web-app-title": "Gram Grabberz",
+  "apple-mobile-web-app-title": "VidFlow",
   "apple-mobile-web-app-status-bar-style": "black-translucent"
 }

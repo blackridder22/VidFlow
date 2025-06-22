@@ -1,15 +1,15 @@
 import { Metadata } from "next";
 
 export const siteConfig = {
-  name: "GramGrabberz",
-  domain: "gram-grabberz.vercel.com",
-  shortName: "GramGrabberz",
+  name: "VidFlow",
+  domain: "vidflow.vercel.com",
+  shortName: "VidFlow",
   creator: "riad-azz",
   description:
     "Fast, free, and no login required. Just paste the URL and download.",
   ogDescription:
     "Fast, free, and no login required. Just paste the URL and download.",
-  url: "https://gram-grabberz.vercel.com",
+  url: "https://vidflow.vercel.com",
 };
 
 export const siteMetadata: Metadata = {
@@ -44,7 +44,9 @@ export const siteMetadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/webflow.png",
+    shortcut: "/webflow.png",
+    apple: "/webflow.png",
   },
-  manifest: "/webmanifest.json",
+  manifest: "/web.manifest.json",
 };

@@ -1,18 +1,16 @@
 import React from "react";
 
-import { useTranslations } from "next-intl";
-
 import {
   Accordion,
+  AccordionContent,
   AccordionItem,
   AccordionTrigger,
-  AccordionContent,
 } from "@/components/ui/accordion";
 
 import { homeSections } from "@/lib/constants";
+import { cn } from "@/lib/utils";
 
 export function FrequentlyAsked() {
-  const t = useTranslations("pages.home.frequentlyAsked");
 
   return (
     <section
@@ -25,11 +23,11 @@ export function FrequentlyAsked() {
             <div className="mb-2 inline-block rounded-lg bg-teal-100 px-3 py-1 text-sm text-teal-700 dark:bg-teal-800 dark:text-teal-50">
               {t("badge")}
             </div>
-            <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">
-              {t("title")}
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+              Frequently Asked Questions
             </h2>
-            <p className="text-muted-foreground mx-auto max-w-[700px] md:text-xl">
-              {t("description")}
+            <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+              Find answers to common questions about our Instagram downloader
             </p>
           </div>
 
@@ -59,29 +57,17 @@ export function FrequentlyAsked() {
               </h3>
 
               <Accordion type="single" collapsible className="w-full">
-                <AccordionItem value="item-1" className="border-b">
-                  <AccordionTrigger className="py-4 text-left font-medium hover:text-teal-500 hover:no-underline">
-                    {t("sections.general.q1.trigger")}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground pb-4 text-start">
-                    {t("sections.general.q1.content")}
-                  </AccordionContent>
+                <AccordionItem value="item-1">
+                  <AccordionTrigger>Is this Instagram downloader free to use?</AccordionTrigger>
+                  <AccordionContent>Yes, our Instagram downloader is completely free to use. There are no hidden fees, subscriptions, or registration requirements.</AccordionContent>
                 </AccordionItem>
-                <AccordionItem value="item-2" className="border-b">
-                  <AccordionTrigger className="py-4 text-left font-medium hover:text-teal-500 hover:no-underline">
-                    {t("sections.general.q2.trigger")}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground pb-4 text-start">
-                    {t("sections.general.q2.content")}
-                  </AccordionContent>
+                <AccordionItem value="item-2">
+                  <AccordionTrigger>What types of Instagram content can I download?</AccordionTrigger>
+                  <AccordionContent>You can download Instagram videos, photos, reels, IGTV videos, and stories. Our tool supports all major Instagram content formats.</AccordionContent>
                 </AccordionItem>
-                <AccordionItem value="item-3" className="border-b">
-                  <AccordionTrigger className="py-4 text-left font-medium hover:text-teal-500 hover:no-underline">
-                    {t("sections.general.q3.trigger")}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground pb-4 text-start">
-                    {t("sections.general.q3.content")}
-                  </AccordionContent>
+                <AccordionItem value="item-3">
+                  <AccordionTrigger>Do I need to install any software?</AccordionTrigger>
+                  <AccordionContent>No installation required! Our Instagram downloader works directly in your web browser. Simply paste the URL and download instantly.</AccordionContent>
                 </AccordionItem>
               </Accordion>
             </div>
@@ -109,29 +95,13 @@ export function FrequentlyAsked() {
               </h3>
 
               <Accordion type="single" collapsible className="w-full">
-                <AccordionItem value="item-4" className="border-b">
-                  <AccordionTrigger className="py-4 text-left font-medium hover:text-teal-500 hover:no-underline">
-                    {t("sections.technical.q1.trigger")}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground pb-4 text-start">
-                    {t("sections.technical.q1.content")}
-                  </AccordionContent>
+                <AccordionItem value="item-4">
+                  <AccordionTrigger>Is it safe to use this downloader?</AccordionTrigger>
+                  <AccordionContent>Absolutely! We prioritize your privacy and security. We don't store your data, require personal information, or install any malware on your device.</AccordionContent>
                 </AccordionItem>
-                <AccordionItem value="item-5" className="border-b">
-                  <AccordionTrigger className="py-4 text-left font-medium hover:text-teal-500 hover:no-underline">
-                    {t("sections.technical.q2.trigger")}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground pb-4 text-start">
-                    {t("sections.technical.q2.content")}
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="item-6" className="border-b">
-                  <AccordionTrigger className="py-4 text-left font-medium hover:text-teal-500 hover:no-underline">
-                    {t("sections.technical.q2.trigger")}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground pb-4 text-start">
-                    {t("sections.technical.q2.content")}
-                  </AccordionContent>
+                <AccordionItem value="item-5">
+                  <AccordionTrigger>What quality are the downloaded videos?</AccordionTrigger>
+                  <AccordionContent>We preserve the original quality of Instagram content. You'll get the same resolution and quality as the original post, including HD videos when available.</AccordionContent>
                 </AccordionItem>
               </Accordion>
             </div>

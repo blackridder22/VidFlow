@@ -2,7 +2,6 @@
 
 import React from "react";
 
-import { useTranslations } from "next-intl";
 import { useIsMobile } from "@/hooks/use-is-mobile";
 
 import {
@@ -15,7 +14,6 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { LogoImage, LogoText } from "@/components/logo";
-import { LocaleDropdown } from "@/features/i18n/locale-dropdown";
 import { ThemeToggleButton } from "@/features/theme/theme-toggle-button";
 
 import { Menu } from "lucide-react";
@@ -25,8 +23,6 @@ import { homeLinks } from "@/lib/constants";
 export function Header() {
   const isMobile = useIsMobile();
   const [open, setOpen] = React.useState(false);
-
-  const t = useTranslations("layouts.home.header");
 
   const scrollUp = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -52,27 +48,7 @@ export function Header() {
 
         {/* Desktop Navigation */}
         <nav className="ml-auto hidden items-center gap-6 md:flex">
-          <a
-            href={homeLinks.features}
-            className="text-sm font-medium transition-colors hover:text-teal-500"
-          >
-            {t("links.features")}
-          </a>
-          <a
-            href={homeLinks.howItWorks}
-            className="text-sm font-medium transition-colors hover:text-teal-500"
-          >
-            {t("links.howItWorks")}
-          </a>
-          <a
-            href={homeLinks.frequentlyAsked}
-            className="text-sm font-medium transition-colors hover:text-teal-500"
-          >
-            {t("links.frequentlyAsked")}
-          </a>
-
-          <div className="border-border flex items-center gap-2 border-l pl-2">
-            <LocaleDropdown />
+          <div className="flex items-center gap-2">
             <ThemeToggleButton />
           </div>
         </nav>
@@ -99,44 +75,15 @@ export function Header() {
                 </SheetTitle>
               </SheetHeader>
               <div className="flex h-full flex-col">
-                <nav className="flex flex-col gap-4 px-4">
-                  <a
-                    href={homeLinks.features}
-                    className="px-2 py-2 text-lg font-medium transition-colors hover:text-teal-500"
-                    onClick={() => setOpen(false)}
-                  >
-                    {t("links.features")}
-                  </a>
-
-                  <a
-                    href={homeLinks.howItWorks}
-                    className="px-2 py-2 text-lg font-medium transition-colors hover:text-teal-500"
-                    onClick={() => setOpen(false)}
-                  >
-                    {t("links.howItWorks")}
-                  </a>
-                  <a
-                    href={homeLinks.frequentlyAsked}
-                    className="px-2 py-2 text-lg font-medium transition-colors hover:text-teal-500"
-                    onClick={() => setOpen(false)}
-                  >
-                    {t("links.frequentlyAsked")}
-                  </a>
-                </nav>
+                {/* Navigation links removed */}
               </div>
               <div className="border-border mt-auto border-t px-4 py-2">
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center justify-between">
                     <span className="text-sm font-medium">
-                      {t("themeLabel")}
+                      Theme
                     </span>
                     <ThemeToggleButton variant="outline" />
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium">
-                      {t("localeLabel")}
-                    </span>
-                    <LocaleDropdown variant="outline" />
                   </div>
                 </div>
               </div>

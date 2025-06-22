@@ -1,4 +1,3 @@
-export const cookiesKeys = {
+export const COOKIE_NAMES = {
   THEME: "MY_THEME",
-  LOCALE: "MY_LOCALE",
 } as const;

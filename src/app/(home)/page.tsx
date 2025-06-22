@@ -1,15 +1,12 @@
-import HomePage from "./page-content";
+import PageContent from "./page-content";
 
 import { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("pages.home");
+export const metadata: Metadata = {
+  title: "VidFlow",
+  description: "Download Instagram videos, photos, reels, and IGTV content for free. Fast, secure, and high-quality downloads with no registration required.",
+};
 
-  return {
-    title: t("title"),
-    description: t("description"),
-  };
+export default function HomePage() {
+  return <PageContent />;
 }
-
-export default HomePage;

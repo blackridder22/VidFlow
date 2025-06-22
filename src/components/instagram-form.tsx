@@ -4,7 +4,7 @@ import React from "react";
 
 import { toast } from "sonner";
 import { useForm } from "react-hook-form";
-import { useTranslations } from "next-intl";
+
 
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -20,7 +20,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-import { Download, Loader2, X } from "lucide-react";
+import { Download, Loader2, X, Play } from "lucide-react";
 
 import { cn, getPostShortcode, isShortcodePresent } from "@/lib/utils";
 import { useGetInstagramPostMutation } from "@/features/react-query/mutations/instagram";
@@ -30,58 +30,24 @@ import { HTTP_CODE_ENUM } from "@/features/api/http-codes";
 const CACHE_TIME = 5 * 60 * 1000;
 
 const useFormSchema = () => {
-  const t = useTranslations("components.instagramForm.inputs");
-
   return z.object({
     url: z
-      .string({ required_error: t("url.validation.required") })
+      .string({ required_error: "Instagram post URL is required" })
       .trim()
       .min(1, {
-        message: t("url.validation.required"),
+        message: "Instagram post URL is required",
       })
-      .startsWith("https://www.instagram.com", t("url.validation.invalid"))
+      .startsWith("https://www.instagram.com", "Please enter a valid Instagram post URL")
       .refine(
         (value) => {
           return isShortcodePresent(value);
         },
-        { message: t("url.validation.invalid") }
+        { message: "Please enter a valid Instagram post URL" }
       ),
   });
 };
 
-function triggerDownload(videoUrl: string) {
-  // Ensure we are in a browser environment
-  if (typeof window === "undefined") return;
 
-  const randomTime = new Date().getTime().toString().slice(-8);
-  const filename = `gram-grabberz-${randomTime}.mp-4`;
-
-  // Construct the URL to your proxy API route
-  const proxyUrl = new URL("/api/download-proxy", window.location.origin); // Use relative path + origin
-  proxyUrl.searchParams.append("url", videoUrl);
-  proxyUrl.searchParams.append("filename", filename);
-
-  console.log("Using proxy URL:", proxyUrl.toString()); // For debugging
-
-  const link = document.createElement("a");
-  // Set href to your proxy route
-  link.href = proxyUrl.toString();
-  link.target = "_blank";
-
-  // The 'download' attribute here is less critical because the proxy
-  // sets the Content-Disposition header, but it can still be helpful
-  // as a fallback or hint for the browser. Keep the desired filename.
-  link.setAttribute("download", filename);
-
-  // Append link to the body temporarily
-  document.body.appendChild(link);
-
-  // Programmatically click the link to trigger the download
-  link.click();
-
-  // Clean up and remove the link
-  document.body.removeChild(link);
-}
 
 type CachedUrl = {
   videoUrl?: string;
@@ -91,11 +57,17 @@ type CachedUrl = {
   };
 };
 
+type VideoData = {
+  url: string;
+  originalUrl: string;
+  shortcode: string;
+};
+
 export function InstagramForm(props: { className?: string }) {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const cachedUrls = React.useRef(new Map<string, CachedUrl>());
-
-  const t = useTranslations("components.instagramForm");
+  const [videoData, setVideoData] = React.useState<VideoData | null>(null);
+  const [isDownloading, setIsDownloading] = React.useState(false);
 
   const {
     isError,
@@ -169,7 +141,11 @@ export function InstagramForm(props: { className?: string }) {
     }
 
     if (cachedUrl?.videoUrl) {
-      triggerDownload(cachedUrl.videoUrl);
+      setVideoData({
+        url: cachedUrl.videoUrl,
+        originalUrl: values.url,
+        shortcode
+      });
       return;
     }
 
@@ -179,7 +155,11 @@ export function InstagramForm(props: { className?: string }) {
       if (status === HTTP_CODE_ENUM.OK) {
         const downloadUrl = data.data.xdt_shortcode_media.video_url;
         if (downloadUrl) {
-          triggerDownload(downloadUrl);
+          setVideoData({
+            url: downloadUrl,
+            originalUrl: values.url,
+            shortcode
+          });
           setCachedUrl(shortcode, downloadUrl);
           toast.success(t("toasts.success"), {
             id: "toast-success",
@@ -218,9 +198,97 @@ export function InstagramForm(props: { className?: string }) {
     }
   }
 
+  async function handleDownload() {
+    if (!videoData) return;
+    
+    setIsDownloading(true);
+    try {
+      const randomTime = new Date().getTime().toString().slice(-8);
+      const filename = `gram-grabberz-${randomTime}.mp4`;
+      
+      const proxyUrl = new URL("/api/download-proxy", window.location.origin);
+      proxyUrl.searchParams.append("url", videoData.originalUrl);
+      proxyUrl.searchParams.append("filename", filename);
+      proxyUrl.searchParams.append("download", "true");
+      
+      const link = document.createElement("a");
+      link.href = proxyUrl.toString();
+      link.target = "_blank";
+      link.setAttribute("download", filename);
+      
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      toast.success(t("toasts.downloadStarted"), {
+        position: "top-center",
+        duration: 2000,
+      });
+    } catch (error) {
+      console.error(error);
+      toast.error(t("toasts.downloadError"), {
+        position: "top-center",
+      });
+    } finally {
+      setIsDownloading(false);
+    }
+  }
+
+  function handleNewVideo() {
+    setVideoData(null);
+    form.setValue("url", "");
+    form.clearErrors("url");
+    inputRef.current?.focus();
+  }
+
   React.useEffect(() => {
     inputRef.current?.focus();
   }, []);
+
+  if (videoData) {
+    const proxyUrl = new URL("/api/download-proxy", window.location.origin);
+    proxyUrl.searchParams.append("url", videoData.originalUrl);
+    
+    return (
+      <div className={cn("w-full space-y-4", props.className)}>
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+          <div className="aspect-video bg-black">
+            <video
+              controls
+              className="w-full h-full object-contain"
+              src={proxyUrl.toString()}
+              poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='5,3 19,12 5,21'/%3E%3C/svg%3E"
+            >
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div className="p-4 space-y-3">
+            <div className="flex flex-col sm:flex-row gap-2">
+              <Button
+                onClick={handleDownload}
+                disabled={isDownloading}
+                className="flex-1 bg-teal-500 text-white hover:bg-teal-600 dark:bg-teal-700 dark:hover:bg-teal-600"
+              >
+                {isDownloading ? (
+                  <Loader2 className="h-4 w-4 animate-spin mr-2" />
+                ) : (
+                  <Download className="h-4 w-4 mr-2" />
+                )}
+                {isDownloading ? t("downloading") : t("download")}
+              </Button>
+              <Button
+                onClick={handleNewVideo}
+                variant="outline"
+                className="flex-1 sm:flex-initial"
+              >
+                {t("newVideo")}
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={cn("w-full space-y-2", props.className)}>
@@ -241,7 +309,7 @@ export function InstagramForm(props: { className?: string }) {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormLabel className="sr-only">
-                  {t("inputs.url.label")}
+                  Video URL
                 </FormLabel>
                 <FormControl>
                   <div className="relative w-full">
@@ -251,7 +319,7 @@ export function InstagramForm(props: { className?: string }) {
                       ref={inputRef}
                       minLength={1}
                       maxLength={255}
-                      placeholder={t("inputs.url.placeholder")}
+                      placeholder="Paste Instagram video URL here..."
                     />
                     {isShowClearButton && (
                       <Button
@@ -276,13 +344,13 @@ export function InstagramForm(props: { className?: string }) {
             {isPending ? (
               <Loader2 className="h-4 w-4 animate-spin" />
             ) : (
-              <Download className="h-4 w-4" />
+              <Play className="h-4 w-4" />
             )}
-            {t("submit")}
+            Download
           </Button>
         </form>
       </Form>
-      <p className="text-muted-foreground text-center text-xs">{t("hint")}</p>
+      <p className="text-muted-foreground text-center text-xs">Works with Instagram posts and reels</p>
     </div>
   );
 }

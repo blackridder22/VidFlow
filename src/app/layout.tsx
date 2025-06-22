@@ -3,12 +3,11 @@ import { DM_Sans as RootFont } from "next/font/google";
 
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/features/theme/theme-provider";
-import { LocaleProvider } from "@/features/i18n/locale-provider";
 import { ReactQueryProvider } from "@/features/react-query/react-query-provider";
+import { PrivacyModal } from "@/components/privacy-modal";
 
 import { cn } from "@/lib/utils";
 import { siteMetadata } from "@/lib/site";
-import { getLocale, getMessages } from "next-intl/server";
 
 import "./globals.css";
 
@@ -19,25 +18,23 @@ const geistSans = RootFont({
 
 export const metadata: Metadata = siteMetadata;
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const locale = await getLocale();
-  const messages = await getMessages();
 
   return (
-    <html lang={locale} className="scroll-smooth" suppressHydrationWarning>
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body className={cn("antialiased", geistSans.className)}>
-        <LocaleProvider locale={locale} messages={messages}>
-          <ThemeProvider>
-            <ReactQueryProvider>
+        <ThemeProvider>
+          <ReactQueryProvider>
+            <PrivacyModal>
               {children}
-              <Toaster closeButton />
-            </ReactQueryProvider>
-          </ThemeProvider>
-        </LocaleProvider>
+            </PrivacyModal>
+            <Toaster closeButton />
+          </ReactQueryProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
