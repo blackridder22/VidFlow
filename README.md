@@ -1,21 +1,14 @@
-# Gram Grabberz (Instagram Video Downloader)
+# VidFlow - Instagram Video Downloader
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This project is an educational demonstration of building a web application to
-download Instagram videos using Next.js. The primary goal is to explore modern
-web development techniques, including server-side rendering/components, API
-interaction (potentially via Next.js API routes), state management, form
-handling, and building a clean UI with Shadcn/ui.
+VidFlow is a modern web application for downloading Instagram videos, built with Next.js and featuring a clean, responsive interface. This project demonstrates modern web development techniques including server-side rendering, API integration, state management, and beautiful UI design.
 
-**Disclaimer:** This tool is intended for educational purposes only. Downloading
-videos from Instagram may violate their Terms of Service. Please respect
-copyright laws and the platform's policies. Use this tool responsibly and only
-for content you have the right to download.
+**Disclaimer:** This tool is intended for educational purposes only. Downloading videos from Instagram may violate their Terms of Service. Please respect copyright laws and the platform's policies. Use this tool responsibly and only for content you have the right to download.
 
-Website Preview: [gram-grabberz.vercel.app](https://gram-grabberz.vercel.app)
+🚀 **Live Demo:** [Deploy on Vercel](https://vercel.com/new/clone?repository-url=https://github.com/blackridder22/VidFlow.git)
 
-![website preview](https://github.com/user-attachments/assets/74e5db68-b5b5-425b-8734-81bbaedeb3c4)
+📱 **Repository:** [https://github.com/blackridder22/VidFlow.git](https://github.com/blackridder22/VidFlow.git)
 
 ## ✨ Features
 
@@ -34,8 +27,7 @@ Website Preview: [gram-grabberz.vercel.app](https://gram-grabberz.vercel.app)
 - **Client-Side Caching:** Efficient data fetching and state management with
   TanStack Query (React Query).
 - **Theming:** Supports light and dark mode using `next-themes`.
-- **Internationalization (i18n):** Setup for multi-language support using
-  `next-intl`.
+- **English Interface:** Clean, user-friendly English-only interface.
 - **User Feedback:** Uses `sonner` for toast notifications.
 - **Optimized Development:** Utilizes Next.js Turbopack (`--turbopack`) for
   faster development builds.
@@ -58,8 +50,7 @@ This project serves as a learning resource for understanding:
 - **TypeScript:** Leveraging static typing in a full-stack React framework.
 - **Modern Styling:** Using Tailwind CSS v4 features and utilities like `clsx`
   and `tailwind-merge`.
-- **Internationalization:** Setting up and managing translations with
-  `next-intl`.
+- **Clean Interface:** Building intuitive and accessible user interfaces.
 - **Project Structure & Tooling:** Organizing a Next.js application, using
   ESLint and Prettier for code quality.
 
@@ -74,11 +65,11 @@ This project serves as a learning resource for understanding:
   [TanStack Query (React Query)](https://tanstack.com/query/latest) (v5)
 - **Form Handling:** [React Hook Form](https://react-hook-form.com/) (v7)
 - **Schema Validation:** [Zod](https://zod.dev/)
-- **Internationalization:** [next-intl](https://next-intl-docs.vercel.app/)
+- **Deployment:** [Vercel](https://vercel.com/) with optimized configuration
 - **Theming:** [next-themes](https://github.com/pacocoursey/next-themes)
 - **Notifications:** [Sonner](https://sonner.emilkowal.ski/)
 - **Linting/Formatting:** ESLint, Prettier
-- **Package Manager:** Yarn
+- **Package Manager:** npm
 
 ## 🚀 Getting Started
 
@@ -87,25 +78,23 @@ Follow these steps to set up and run the project locally:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/riad-azz/instagram-video-downloader.git
+   git clone https://github.com/blackridder22/VidFlow.git
    ```
 
    ```bash
-   cd instagram-video-downloader
+   cd VidFlow
    ```
 
 2. **Install dependencies:**
 
    ```bash
-   yarn install # or npm install
+   npm install
    ```
 
 3. **Run the development server:**
 
-   - This project uses Turbopack for faster development builds.
-
    ```bash
-   yarn dev # or npm run dev
+   npm run dev
    ```
 
    - The application should now be running on
@@ -113,22 +102,32 @@ Follow these steps to set up and run the project locally:
 
 4. **Build for production:**
 
-   Ensures Locales are up to date, must be run every time you add/edit a locale
-   file for production _(no need to run for development)_.
-
    ```bash
-   yarn build:locales # or npm run build:locales
-   ```
-
-   ```bash
-   yarn build # or npm run build
+   npm run build
    ```
 
 5. **Start the production server:**
 
    ```bash
-   yarn start # or npm run start
+   npm run start
    ```
+
+## 🚀 Deployment
+
+This project is configured for easy deployment on Vercel:
+
+1. **Deploy to Vercel:**
+   - Push your code to GitHub
+   - Connect your repository to Vercel
+   - Vercel will automatically detect Next.js and deploy
+
+2. **Manual Deployment:**
+   ```bash
+   npm i -g vercel
+   vercel --prod
+   ```
+
+The project includes a `vercel.json` configuration file for optimized deployment settings.
 
 ## 💡 Usage
 
