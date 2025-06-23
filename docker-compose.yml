@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  vidflow:
+    build: .
+    ports:
+      - "2300:2300"
+    environment:
+      - NODE_ENV=production
+      - PORT=2300
+    restart: unless-stopped
+    container_name: vidflow-app
