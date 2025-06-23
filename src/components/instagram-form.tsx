@@ -150,7 +150,8 @@ export function InstagramForm(props: { className?: string }) {
     }
 
     try {
-      const { data, status } = await getInstagramPost({ shortcode });
+      const response = await getInstagramPost({ shortcode });
+      const { data, status } = response;
 
       if (status === HTTP_CODE_ENUM.OK) {
         const downloadUrl = data.data.xdt_shortcode_media.video_url;
