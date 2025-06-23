@@ -1,5 +1,4 @@
 import React from "react";
-
 import { useFetch } from "@/features/api/hooks/use-fetch";
 
 import { RequestConfigType } from "@/types/request-config";
@@ -14,14 +13,14 @@ export type GetInstagramPostRequest = {
 export type GetInstagramPostResponse = IG_GraphQLResponseDto;
 
 export function useGetInstagramPost() {
-  const fetch = useFetch();
+  const { fetchData } = useFetch();
 
   return React.useCallback(
     (data: GetInstagramPostRequest, requestConfig?: RequestConfigType) => {
-      return fetch(`/api/instagram/p/${data.shortcode}`, requestConfig).then(
+      return fetchData(`/api/instagram/p/${data.shortcode}`, requestConfig).then(
         wrapperFetchJsonResponse<GetInstagramPostResponse>
       );
     },
-    [fetch]
+    [fetchData]
   );
 }
