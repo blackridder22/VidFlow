@@ -130,13 +130,13 @@ export function InstagramForm(props: { className?: string }) {
     const shortcode = getPostShortcode(values.url);
 
     if (!shortcode) {
-      form.setError("url", { message: t("inputs.url.validation.invalid") });
+      form.setError("url", { message: "Please enter a valid Instagram post URL" });
       return;
     }
 
     const cachedUrl = getCachedUrl(shortcode);
     if (cachedUrl?.invalid) {
-      form.setError("url", { message: t(cachedUrl.invalid.messageKey) });
+      form.setError("url", { message: "Invalid Instagram post URL" });
       return;
     }
 
@@ -161,7 +161,7 @@ export function InstagramForm(props: { className?: string }) {
             shortcode
           });
           setCachedUrl(shortcode, downloadUrl);
-          toast.success(t("toasts.success"), {
+          toast.success("Video loaded successfully!", {
             id: "toast-success",
             position: "top-center",
             duration: 1500,
@@ -176,7 +176,7 @@ export function InstagramForm(props: { className?: string }) {
         status === HTTP_CODE_ENUM.INTERNAL_SERVER_ERROR
       ) {
         const errorMessageKey = `serverErrors.${data.error}`;
-        form.setError("url", { message: t(errorMessageKey) });
+        form.setError("url", { message: "Failed to load video. Please check the URL and try again." });
         if (
           status === HTTP_CODE_ENUM.BAD_REQUEST ||
           status === HTTP_CODE_ENUM.NOT_FOUND
@@ -190,7 +190,7 @@ export function InstagramForm(props: { className?: string }) {
       }
     } catch (error) {
       console.error(error);
-      toast.error(t("toasts.error"), {
+      toast.error("An error occurred while loading the video", {
         dismissible: true,
         id: "toast-error",
         position: "top-center",
@@ -220,13 +220,13 @@ export function InstagramForm(props: { className?: string }) {
       link.click();
       document.body.removeChild(link);
       
-      toast.success(t("toasts.downloadStarted"), {
+      toast.success("Download started!", {
         position: "top-center",
         duration: 2000,
       });
     } catch (error) {
       console.error(error);
-      toast.error(t("toasts.downloadError"), {
+      toast.error("Download failed. Please try again.", {
         position: "top-center",
       });
     } finally {
@@ -274,14 +274,14 @@ export function InstagramForm(props: { className?: string }) {
                 ) : (
                   <Download className="h-4 w-4 mr-2" />
                 )}
-                {isDownloading ? t("downloading") : t("download")}
+                {isDownloading ? "Downloading..." : "Download"}
               </Button>
               <Button
                 onClick={handleNewVideo}
                 variant="outline"
                 className="flex-1 sm:flex-initial"
               >
-                {t("newVideo")}
+                New Video
               </Button>
             </div>
           </div>
